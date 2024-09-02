@@ -1,4 +1,4 @@
-const path = require('path');
+const path = require('node:path');
 
 module.exports = {
 	entry: './src/index.js',
@@ -7,7 +7,11 @@ module.exports = {
 		filename: 'browser.min.js',
 		path: path.resolve(__dirname, 'dist'),
 		library: 'emailValidator',
-		libraryTarget: 'window'
+		libraryTarget: 'umd',
+		globalObject: 'this'
+	},
+	optimization: {
+		minimize: true
 	},
 	devtool: 'source-map'
 };
