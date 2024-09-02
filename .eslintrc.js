@@ -1,11 +1,11 @@
 module.exports = {
 	'env': {
 		'es6': true,
-		'node': true,
+		'node': true
 	},
 	'extends': ['eslint:recommended'],
 	'parserOptions': {
-		'ecmaVersion': 'latest',
+		'ecmaVersion': 'latest'
 	},
 	'rules': {
 		'arrow-spacing': ['warn', { before: true, after: true }],
@@ -44,6 +44,6 @@ module.exports = {
 		'space-unary-ops': 'error',
 		'spaced-comment': 'warn',
 		'wrap-regex': 'error',
-		'yoda': 'error',
-	},
+		'yoda': 'error'
+	}
 };

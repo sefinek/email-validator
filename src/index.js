@@ -33,5 +33,5 @@ module.exports = {
 
 		return MAIN_REGEX.test(email);
 	},
-	version,
+	version
 };

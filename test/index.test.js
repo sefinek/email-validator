@@ -34,7 +34,7 @@ const validEmails = [
 	'user@example.museum',
 	'user@example.travel',
 	'`a@a.fr',
-	'`aa@fr.com',
+	'`aa@fr.com'
 ];
 
 const invalidEmails = [
@@ -93,7 +93,7 @@ const invalidEmails = [
 	'@gmail.com',
 	'sdafgi/\\\'jhfdshajikdfs.,/akjlhsdfakjhlfdashjkladf/,.kshkljadsfhkljsda/][][\\]rodweimyrycweomymoencwrtymoeqwcrtymoqrewcfymorecqwmyuor;eqwc@gmail.com',
 	'user@[123.123.123.123]',
-	'ówó@ówó.pl',
+	'ówó@ówó.pl'
 ];
 
 const validUnsupported = [
@@ -103,7 +103,7 @@ const validUnsupported = [
 	'"quoted-at-sign@sld.org"@sld.com',
 	'"\\e\\s\\c\\a\\p\\e\\d"@sld.com',
 	'bracketed-IP-instead-of-domain@[127.0.0.1]',
-	'punycode-numbers-in-tld@sld.xn--3e0b707e',
+	'punycode-numbers-in-tld@sld.xn--3e0b707e'
 ];
 
 describe('Email address validation', () => {
