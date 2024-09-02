@@ -1,7 +1,6 @@
-const { version } = require('../package.json');
-const MAIN_REGEX = /^[-!#$%&'*+\\/0-9=?A-Z^_a-z`{|}~](\.?[-!#$%&'*+\\/0-9=?A-Z^_a-z`{|}~])*@[a-zA-Z0-9](-*\.?[a-zA-Z0-9])*\.[a-zA-Z](-?[a-zA-Z0-9])+$/;
+const REGEX = /^[-!#$%&'*+\\/0-9=?A-Z^_a-z`{|}~](\.?[-!#$%&'*+\\/0-9=?A-Z^_a-z`{|}~])*@[a-zA-Z0-9](-*\.?[a-zA-Z0-9])*\.[a-zA-Z](-?[a-zA-Z0-9])+$/;
 
-function isValidLocalPart(localPart) {
+const isValidLocalPart = localPart => {
 	if (localPart.startsWith('.') || localPart.endsWith('.')) return false;
 
 	let prevChar = null;
@@ -11,16 +10,16 @@ function isValidLocalPart(localPart) {
 	}
 
 	return true;
-}
+};
 
-function isValidDomain(domain) {
+const isValidDomain = domain => {
 	const domainParts = domain.split('.');
 	for (const part of domainParts) {
 		if (part.length === 0 || part.length > 63 || part.startsWith('-') || part.endsWith('-')) return false;
 	}
 
 	return true;
-}
+};
 
 module.exports = {
 	test: email => {
@@ -31,7 +30,7 @@ module.exports = {
 
 		if (!isValidLocalPart(localPart) || !isValidDomain(domain)) return false;
 
-		return MAIN_REGEX.test(email);
+		return REGEX.test(email);
 	},
-	version
+	version: '1.0.2'
 };
