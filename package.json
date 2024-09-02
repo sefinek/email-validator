@@ -32,6 +32,8 @@
   "devDependencies": {
     "jest": "^29.7.0",
     "webpack": "^5.94.0",
-    "webpack-cli": "^5.1.4"
+    "webpack-cli": "^5.1.4",
+    "@eslint/js": "^9.9.1",
+    "globals": "^15.9.0"
   }
 }
