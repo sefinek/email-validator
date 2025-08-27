@@ -81,4 +81,4 @@ If you find this module helpful, please consider giving the [repository a star](
 For any questions or issues, please create a new [Issue](https://github.com/sefinek/email-validator/issues/new).
 
 
-## 📑 » MIT License
+### 📑 » MIT License
