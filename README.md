@@ -82,4 +82,3 @@ For any questions or issues, please create a new [Issue](https://github.com/sefi
 
 
 ## 📑 » MIT License
-Copyright 2023-2024 © by [Sefinek](https://sefine.net). All Rights Reserved.
