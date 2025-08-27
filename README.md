@@ -5,11 +5,11 @@ This lightweight module facilitates precise email address validation, returning 
     <a href="https://www.npmjs.com/package/@sefinek/email-validator">
         <img src="https://img.shields.io/npm/dm/@sefinek/email-validator" alt="npm downloads">
     </a>
-    <a href="https://github.com/sefinek24/email-validator/issues">
-        <img src="https://img.shields.io/github/issues/sefinek24/email-validator" alt="Issues">
+    <a href="https://github.com/sefinek/email-validator/issues">
+        <img src="https://img.shields.io/github/issues/sefinek/email-validator" alt="Issues">
     </a>
-    <a href="https://github.com/sefinek24/email-validator/commits/main">
-        <img src="https://img.shields.io/github/last-commit/sefinek24/email-validator" alt="Last commit">
+    <a href="https://github.com/sefinek/email-validator/commits/main">
+        <img src="https://img.shields.io/github/last-commit/sefinek/email-validator" alt="Last commit">
     </a>
     <a href="https://www.jsdelivr.com/package/npm/@sefinek/email-validator">
         <img src="https://data.jsdelivr.com/v1/package/npm/@sefinek/email-validator/badge?style=rounded" alt="Stats">
@@ -44,7 +44,7 @@ if (emailValidator.test(testEmail)) {
 ## 🌍 » Browser
 ### jsdelivr.net
 ```
-https://cdn.jsdelivr.net/npm/@sefinek/email-validator@1/dist/browser.min.js
+https://cdn.jsdelivr.net/npm/@sefinek/email-validator@1/dist/email-validator.min.js
 ```
 
 ### Example
@@ -58,7 +58,7 @@ https://cdn.jsdelivr.net/npm/@sefinek/email-validator@1/dist/browser.min.js
 <body>
     <h1>email-validator</h1>
 
-    <script src="https://cdn.jsdelivr.net/npm/@sefinek/email-validator@1/dist/browser.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@sefinek/email-validator@1/dist/email-validator.min.js"></script>
     <script>
         const email = 'contact@sefinek.net';
         
@@ -77,8 +77,8 @@ https://cdn.jsdelivr.net/npm/@sefinek/email-validator@1/dist/browser.min.js
 
 
 ## ⭐ » Thank you
-If you find this module helpful, please consider giving the [repository a star](https://github.com/sefinek24/email-validator).
-For any questions or issues, please create a new [Issue](https://github.com/sefinek24/email-validator/issues/new).
+If you find this module helpful, please consider giving the [repository a star](https://github.com/sefinek/email-validator).
+For any questions or issues, please create a new [Issue](https://github.com/sefinek/email-validator/issues/new).
 
 
 ## 📑 » MIT License

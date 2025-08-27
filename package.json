@@ -14,13 +14,13 @@
     "validation",
     "validator"
   ],
-  "homepage": "https://github.com/sefinek24/email-validator#readme",
+  "homepage": "https://github.com/sefinek/email-validator#readme",
   "bugs": {
-    "url": "https://github.com/sefinek24/email-validator/issues"
+    "url": "https://github.com/sefinek/email-validator/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sefinek24/email-validator.git"
+    "url": "git+https://github.com/sefinek/email-validator.git"
   },
   "license": "MIT",
   "author": "Sefinek <contact@sefinek.net> (https://sefinek.net)",
