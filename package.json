@@ -30,6 +30,13 @@
   "directories": {
     "test": "test"
   },
+  "files": [
+    "src",
+    "dist",
+    "README.md",
+    "LICENSE",
+    "test"
+  ],
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "test": "jest",
