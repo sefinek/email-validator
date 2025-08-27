@@ -1,4 +1,4 @@
-# 📨 Email address validator
+# 📨 Email Address Validator
 This lightweight module facilitates precise email address validation, returning a `Boolean` value of `true` or `false`.
 
 <div align="center">
