@@ -32,5 +32,5 @@ module.exports = {
 
 		return REGEX.test(email);
 	},
-	version: '1.0.3' // TODO: Remember this
+	version: '1.0.4', // TODO: Remember this
 };

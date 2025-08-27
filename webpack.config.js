@@ -4,14 +4,14 @@ module.exports = {
 	entry: './src/index.js',
 	mode: 'production',
 	output: {
-		filename: 'browser.min.js',
+		filename: 'email-validator.min.js',
 		path: path.resolve(__dirname, 'dist'),
 		library: 'emailValidator',
 		libraryTarget: 'umd',
-		globalObject: 'this'
+		globalObject: 'this',
 	},
 	optimization: {
-		minimize: true
+		minimize: true,
 	},
-	devtool: 'source-map'
+	devtool: 'source-map',
 };
