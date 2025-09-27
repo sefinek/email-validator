@@ -31,12 +31,12 @@ yarn add @sefinek/email-validator
 ### Example
 ```js
 const emailValidator = require('@sefinek/email-validator');
-const testEmail = 'contact@sefinek.net';
 
-if (emailValidator.test(testEmail)) {
-    console.log(`Email ${testEmail} is valid.`);
+const TEST_EMAIL = 'contact@sefinek.net';
+if (emailValidator.test(TEST_EMAIL)) {
+    console.log(`Email ${TEST_EMAIL} is valid.`);
 } else {
-    console.log(`Email ${testEmail} is NOT valid!`);
+    console.log(`Email ${TEST_EMAIL} is NOT valid!`);
 }
 ```
 
