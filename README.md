@@ -1,5 +1,5 @@
 # 📨 Email Address Validator
-This lightweight module facilitates precise email address validation, returning a `Boolean` value of `true` or `false`. [MIT license](LICENSE).
+This lightweight module facilitates precise email address validation, returning a `Boolean` value of `true` or `false`.
 
 <div align="center">
     <a href="https://www.npmjs.com/package/@sefinek/email-validator">
