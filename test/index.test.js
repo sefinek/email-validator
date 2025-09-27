@@ -109,19 +109,19 @@ const validUnsupported = [
 describe('Email address validation', () => {
 	describe.each(validEmails)('Test valid email addresses', email => {
 		it(email, () => {
-			expect(emailValidator.test(email)).toBe(true);
+			expect(emailValidator(email)).toBe(true);
 		});
 	});
 
 	describe.each(invalidEmails)('Test invalid email addresses', email => {
 		it(email, () => {
-			expect(emailValidator.test(email)).toBe(false);
+			expect(emailValidator(email)).toBe(false);
 		});
 	});
 
 	describe.each(validUnsupported)('Test valid but unsupported email addresses', email => {
 		it(email, () => {
-			expect(emailValidator.test(email)).toBe(false);
+			expect(emailValidator(email)).toBe(false);
 		});
 	});
 });

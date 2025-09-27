@@ -33,7 +33,7 @@ yarn add @sefinek/email-validator
 const emailValidator = require('@sefinek/email-validator');
 
 const TEST_EMAIL = 'contact@sefinek.net';
-if (emailValidator.test(TEST_EMAIL)) {
+if (emailValidator(TEST_EMAIL)) {
     console.log(`Email ${TEST_EMAIL} is valid.`);
 } else {
     console.log(`Email ${TEST_EMAIL} is NOT valid!`);
@@ -44,7 +44,7 @@ if (emailValidator.test(TEST_EMAIL)) {
 ## 🌍 » Browser
 ### jsdelivr.net
 ```
-https://cdn.jsdelivr.net/npm/@sefinek/email-validator@1/dist/email-validator.min.js
+https://cdn.jsdelivr.net/npm/@sefinek/email-validator@2/dist/email-validator.min.js
 ```
 
 ### Example
@@ -58,11 +58,11 @@ https://cdn.jsdelivr.net/npm/@sefinek/email-validator@1/dist/email-validator.min
 <body>
     <h1>email-validator</h1>
 
-    <script src="https://cdn.jsdelivr.net/npm/@sefinek/email-validator@1/dist/email-validator.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@sefinek/email-validator@2/dist/email-validator.min.js"></script>
     <script>
         const email = 'contact@sefinek.net';
-        
-        if (emailValidator.test(email)) {
+
+        if (emailValidator(email)) {
             console.log(`✔️ Email ${email} is valid.`);
         } else {
             console.log(`❎ Email ${email} is NOT valid!`);

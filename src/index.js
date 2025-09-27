@@ -21,16 +21,13 @@ const isValidDomain = domain => {
 	return true;
 };
 
-module.exports = {
-	test: email => {
-		if (!email || email.includes('*')) return false;
+module.exports = email => {
+	if (!email || email.includes('*')) return false;
 
-		const [localPart, domain] = email.split('@');
-		if (!localPart || !domain || localPart.length > 64 || domain.length > 255) return false;
+	const [localPart, domain] = email.split('@');
+	if (!localPart || !domain || localPart.length > 64 || domain.length > 255) return false;
 
-		if (!isValidLocalPart(localPart) || !isValidDomain(domain)) return false;
+	if (!isValidLocalPart(localPart) || !isValidDomain(domain)) return false;
 
-		return REGEX.test(email);
-	},
-	version: '1.0.4', // TODO: Remember this
+	return REGEX.test(email);
 };
