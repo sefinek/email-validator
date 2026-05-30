@@ -1,3 +1,4 @@
+const VERSION = '2.0.1';
 const REGEX = /^[-!#$%&'*+\\/0-9=?A-Z^_a-z`{|}~](\.?[-!#$%&'*+\\/0-9=?A-Z^_a-z`{|}~])*@[a-zA-Z0-9](-*\.?[a-zA-Z0-9])*\.[a-zA-Z](-?[a-zA-Z0-9])+$/;
 
 const isValidLocalPart = localPart => {
@@ -21,7 +22,7 @@ const isValidDomain = domain => {
 	return true;
 };
 
-module.exports = email => {
+const emailValidator = email => {
 	if (!email || email.includes('*')) return false;
 
 	const [localPart, domain] = email.split('@');
@@ -31,3 +32,7 @@ module.exports = email => {
 
 	return REGEX.test(email);
 };
+
+
+emailValidator.version = VERSION;
+module.exports = emailValidator;

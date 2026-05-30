@@ -73,9 +73,12 @@ https://cdn.jsdelivr.net/npm/@sefinek/email-validator@2/dist/email-validator.min
 ```
 
 ### Demo
-> https://sefinek.net/npm/email-validator/demo
+> https://sefinek.net/projects/email-validator
 
 
 ## ⭐ » Thank you
 If you find this module helpful, please consider giving the [repository a star](https://github.com/sefinek/email-validator).
 For any questions or issues, please create a new [Issue](https://github.com/sefinek/email-validator/issues/new).
+
+## 🔑 License
+Copyright © [Sefinek](https://sefinek.net). Licensed under the [MIT License](LICENSE).

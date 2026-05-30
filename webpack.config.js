@@ -2,16 +2,16 @@ const path = require('node:path');
 
 module.exports = {
 	entry: './src/index.js',
+	target: 'web',
 	mode: 'production',
 	output: {
-		filename: 'email-validator.min.js',
 		path: path.resolve(__dirname, 'dist'),
-		library: 'emailValidator',
-		libraryTarget: 'umd',
+		filename: 'emailValidator.min.js',
 		globalObject: 'this',
-	},
-	optimization: {
-		minimize: true,
+		library: {
+			name: 'emailValidator',
+			type: 'umd',
+		},
 	},
 	devtool: 'source-map',
 };

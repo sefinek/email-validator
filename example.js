@@ -1,8 +1,18 @@
 const emailValidator = require('./src/index.js');
 
-const TEST_EMAIL = 'contact@sefinek.net';
-if (emailValidator(TEST_EMAIL)) {
-	console.log(`Email ${TEST_EMAIL} is valid.`);
-} else {
-	console.log(`Email ${TEST_EMAIL} is NOT valid!`);
+console.log(`-- @sefinek/email-validator v${emailValidator.version} --\n`);
+
+const emails = [
+	'contact@sefinek.net',
+	'user.name+tag@example.co.uk',
+	'invalid-email',
+	'missing@domain',
+	'@no-local.com',
+	'double..dot@example.com',
+	'',
+];
+
+for (const email of emails) {
+	const valid = emailValidator(email);
+	console.log(`${valid ? '✔' : '✘'} ${email || '(empty string)'}`);
 }

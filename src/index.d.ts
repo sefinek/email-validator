@@ -1,18 +1,17 @@
 /**
- * Function used for validating an email address.
+ * Returns `true` if the email address is valid, otherwise `false`.
  *
- * @param email - The email address to validate.
  * @example
  * const emailValidator = require('@sefinek/email-validator');
- * const email = 'example@example.com';
  *
- * if (emailValidator(email)) {
- *    console.log(`Email ${email} is valid!`);
- * } else {
- *    console.log(`Email ${email} is NOT valid!`);
- * }
- * @returns Returns true if the email address is valid, otherwise false.
+ * emailValidator('contact@sefinek.net'); // true
+ * emailValidator('invalid-email');       // false
+ *
+ * @version 2.0.1
  */
-declare function emailValidator(email: string): boolean;
+declare const emailValidator: {
+	(email: string): boolean;
+	readonly version: string;
+};
 
 export = emailValidator;

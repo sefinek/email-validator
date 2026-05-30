@@ -106,6 +106,17 @@ const validUnsupported = [
 	'punycode-numbers-in-tld@sld.xn--3e0b707e',
 ];
 
+describe('Module exports', () => {
+	it('emailValidator is a function', () => {
+		expect(typeof emailValidator).toBe('function');
+	});
+
+	it('version is a non-empty string', () => {
+		expect(typeof emailValidator.version).toBe('string');
+		expect(emailValidator.version.length).toBeGreaterThan(0);
+	});
+});
+
 describe('Email address validation', () => {
 	describe.each(validEmails)('Test valid email addresses', email => {
 		it(email, () => {
