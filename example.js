@@ -16,3 +16,5 @@ for (const email of emails) {
 	const valid = emailValidator(email);
 	console.log(`${valid ? '✔' : '✘'} ${email || '(empty string)'}`);
 }
+
+// See also: https://sefinek.net/projects/email-validator
