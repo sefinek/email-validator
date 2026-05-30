@@ -28,6 +28,7 @@
   },
   "license": "MIT",
   "author": "Sefinek <contact@sefinek.net> (https://sefinek.net)",
+  "type": "commonjs",
   "exports": {
     ".": {
       "types": "./src/index.d.ts",
