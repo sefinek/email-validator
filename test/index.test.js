@@ -1,7 +1,11 @@
 const emailValidator = require('../src/index.js');
+const { version: packageVersion } = require('../package.json');
 
-// 260 chars, every label well-formed (<=63, no leading/trailing dash) — rejected solely by the RFC 5321 total-length limit (254).
+// 260 chars, every label well-formed (<=63, no leading/trailing dash), rejected solely by the RFC 5321 total-length limit (254).
 const tooLongButWellFormed = `${'a'.repeat(64)}@${'b'.repeat(63)}.${'c'.repeat(63)}.${'d'.repeat(63)}.com`;
+
+// Local part at the exact 64-character maximum, must still be valid.
+const maxLengthLocalPart = `${'a'.repeat(64)}@example.com`;
 
 const validEmails = [
 	'01234567890@numbers-in-local.net',
@@ -17,6 +21,7 @@ const validEmails = [
 	'example@example.com',
 	'john.doe@example.co',
 	'letters-in-sld@123.com',
+	maxLengthLocalPart,
 	'local@dash-in-sld.com',
 	'local@sld.newTLD',
 	'local@sub.domains.com',
@@ -119,6 +124,20 @@ describe('Module exports', () => {
 		expect(typeof emailValidator.version).toBe('string');
 		expect(emailValidator.version.length).toBeGreaterThan(0);
 	});
+
+	it('version matches package.json', () => {
+		expect(emailValidator.version).toBe(packageVersion);
+	});
+});
+
+describe('Robustness against non-string input', () => {
+	test.each([null, undefined, 42, 0, true, false, {}, [], ['a@b.com'], Symbol('x')])(
+		'returns false without throwing for: %p',
+		input => {
+			expect(() => emailValidator(input)).not.toThrow();
+			expect(emailValidator(input)).toBe(false);
+		}
+	);
 });
 
 describe('Email address validation', () => {
