@@ -46,7 +46,7 @@
   "main": "src/index.js",
   "types": "src/index.d.ts",
   "directories": {
-    "example": "examples"
+    "test": "test"
   },
   "files": [
     "dist",
