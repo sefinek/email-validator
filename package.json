@@ -1,8 +1,9 @@
 {
   "name": "@sefinek/email-validator",
-  "version": "2.0.1",
-  "description": "Lightweight npm module for email address validation.",
+  "version": "2.1.0",
+  "description": "Lightweight npm module for email address validation with optional MX record verification.",
   "keywords": [
+    "dns",
     "email",
     "email-address-validator",
     "email-checker",
@@ -10,6 +11,9 @@
     "email-verifier",
     "email-verify",
     "emails",
+    "mx",
+    "mx-record",
+    "mx-records",
     "syntax",
     "validation",
     "validator"
@@ -33,6 +37,10 @@
     ".": {
       "types": "./src/index.d.ts",
       "require": "./src/index.js"
+    },
+    "./mx": {
+      "types": "./src/mx.d.ts",
+      "require": "./src/mx.js"
     }
   },
   "main": "src/index.js",
@@ -63,5 +71,8 @@
   },
   "engines": {
     "node": ">=18.0.0"
+  },
+  "allowScripts": {
+    "unrs-resolver@1.12.2": true
   }
 }
