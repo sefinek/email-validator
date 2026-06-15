@@ -1,5 +1,8 @@
 const emailValidator = require('../src/index.js');
 
+// 260 chars, every label well-formed (<=63, no leading/trailing dash) — rejected solely by the RFC 5321 total-length limit (254).
+const tooLongButWellFormed = `${'a'.repeat(64)}@${'b'.repeat(63)}.${'c'.repeat(63)}.${'d'.repeat(63)}.com`;
+
 const validEmails = [
 	'01234567890@numbers-in-local.net',
 	'a@single-character-in-local.org',
@@ -21,7 +24,6 @@ const validEmails = [
 	'one-character-third-level@a.example.com',
 	'one-letter-sld@x.org',
 	'single-character-in-sld@x.org',
-	't119037jskc_ihndkdoz@aakctgajathzffcsuqyjhgjuxnuulgnhxtnbquwtgxljfayeestsjdbalthtddy.lgtmsdhywswlameglunsaplsblljavswxrltovagexhtttodqedmicsekvpmpuu.pgjvdmvzyltpixvalfbktnnpjyjqswbfvtpbfsngqtmhgamhrbqqvyvlhqigggv.nxqglspfbwdhtfpibcrccvctmoxuxwlunghhwacjtrclgirrgppvshxvrzkoifl',
 	'test@test--1.com',
 	'the-character-limit@for-each-part.of-the-domain.is-sixty-three-characters.this-is-exactly-sixty-three-characters-so-it-is-valid-blah-blah.com',
 	'the-total-length@of-an-entire-address.cannot-be-longer-than-two-hundred-and-fifty-four-characters.and-this-address-is-254-characters-exactly.so-it-should-be-valid.and-im-going-to-add-some-more-words-here.to-increase-the-length-blah-blah-blah-blah-bla.org',
@@ -71,6 +73,7 @@ const invalidEmails = [
 	'partially."quoted"@sld.com',
 	'sld-ends-with-dash@sld-.com',
 	'sld-starts-with-dashsh@-sld.com',
+	't119037jskc_ihndkdoz@aakctgajathzffcsuqyjhgjuxnuulgnhxtnbquwtgxljfayeestsjdbalthtddy.lgtmsdhywswlameglunsaplsblljavswxrltovagexhtttodqedmicsekvpmpuu.pgjvdmvzyltpixvalfbktnnpjyjqswbfvtpbfsngqtmhgamhrbqqvyvlhqigggv.nxqglspfbwdhtfpibcrccvctmoxuxwlunghhwacjtrclgirrgppvshxvrzkoifl',
 	'the-character-limit@for-each-part.of-the-domain.is-sixty-three-characters.this-is-exactly-sixty-four-characters-so-it-is-invalid-blah-blah.com',
 	'the-local-part-is-invalid-if-it-is-longer-than-sixty-four-characters@sld.net',
 	'the-total-length@of-an-entire-address.cannot-be-longer-than-two-hundred-and-fifty-six-characters.and-this-address-is-257-characters-exactly.so-it-should-be-invalid.and-im-going-to-add-some-more-words-here.to-increase-the-length-blah-blah-blah-blah-blah-.org',
@@ -86,6 +89,7 @@ const invalidEmails = [
 	'user@.travel',
 	'user@123.123.123.123',
 	'user@123.123.123.123]',
+	tooLongButWellFormed,
 	'user@com',
 	'user@example',
 	'boop😽@wp.pl',

@@ -6,7 +6,7 @@ module.exports = {
 	mode: 'production',
 	output: {
 		path: path.resolve(__dirname, 'dist'),
-		filename: 'emailValidator.min.js',
+		filename: 'email-validator.min.js',
 		globalObject: 'this',
 		library: {
 			name: 'emailValidator',
