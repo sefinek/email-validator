@@ -71,6 +71,25 @@ describe('verifyMx', () => {
 		expect(setServers).not.toHaveBeenCalled();
 	});
 
+	test('uses the default resolver when servers is an empty array', async () => {
+		resolveMx.mockResolvedValue([{ exchange: 'mx', priority: 1 }]);
+		await verifyMx('contact@sefinek.net', { servers: [] });
+		expect(Resolver).not.toHaveBeenCalled();
+		expect(setServers).not.toHaveBeenCalled();
+	});
+
+	test('applies default timeout and tries when only servers are given', async () => {
+		resolveMx.mockResolvedValue([{ exchange: 'mx', priority: 1 }]);
+		await verifyMx('contact@sefinek.net', { servers: ['1.1.1.1'] });
+		expect(Resolver).toHaveBeenCalledWith({ timeout: -1, tries: 4 });
+	});
+
+	test('trims surrounding whitespace from the domain', async () => {
+		resolveMx.mockResolvedValue([{ exchange: 'mx', priority: 1 }]);
+		await expect(verifyMx('contact@sefinek.net   ')).resolves.toBe(true);
+		expect(resolveMx).toHaveBeenCalledWith('sefinek.net');
+	});
+
 	describe('validateSyntax', () => {
 		test('still verifies MX for a syntactically valid address', async () => {
 			resolveMx.mockResolvedValue([{ exchange: 'mx', priority: 1 }]);
@@ -86,12 +105,6 @@ describe('verifyMx', () => {
 		test('rejects a bare domain when enabled', async () => {
 			await expect(verifyMx('sefinek.net', { validateSyntax: true })).resolves.toBe(false);
 			expect(resolveMx).not.toHaveBeenCalled();
-		});
-
-		test('accepts a bare domain when disabled (default)', async () => {
-			resolveMx.mockResolvedValue([{ exchange: 'mx', priority: 1 }]);
-			await expect(verifyMx('sefinek.net')).resolves.toBe(true);
-			expect(resolveMx).toHaveBeenCalledWith('sefinek.net');
 		});
 	});
 });

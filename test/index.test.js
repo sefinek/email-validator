@@ -1,11 +1,12 @@
 const emailValidator = require('../src/index.js');
 const { version: packageVersion } = require('../package.json');
 
-// 260 chars, every label well-formed (<=63, no leading/trailing dash), rejected solely by the RFC 5321 total-length limit (254).
-const tooLongButWellFormed = `${'a'.repeat(64)}@${'b'.repeat(63)}.${'c'.repeat(63)}.${'d'.repeat(63)}.com`;
-
 // Local part at the exact 64-character maximum, must still be valid.
 const maxLengthLocalPart = `${'a'.repeat(64)}@example.com`;
+
+// Boundary pair differing by exactly one character: 254 is the RFC 5321 maximum (valid), 255 is one over (invalid).
+const exactlyMaxLength = `${'a'.repeat(64)}@${'b'.repeat(63)}.${'c'.repeat(63)}.${'d'.repeat(58)}.io`;
+const oneOverMaxLength = `${'a'.repeat(64)}@${'b'.repeat(63)}.${'c'.repeat(63)}.${'d'.repeat(59)}.io`;
 
 const validEmails = [
 	'01234567890@numbers-in-local.net',
@@ -22,6 +23,7 @@ const validEmails = [
 	'john.doe@example.co',
 	'letters-in-sld@123.com',
 	maxLengthLocalPart,
+	exactlyMaxLength,
 	'local@dash-in-sld.com',
 	'local@sld.newTLD',
 	'local@sub.domains.com',
@@ -94,7 +96,7 @@ const invalidEmails = [
 	'user@.travel',
 	'user@123.123.123.123',
 	'user@123.123.123.123]',
-	tooLongButWellFormed,
+	oneOverMaxLength,
 	'user@com',
 	'user@example',
 	'boop😽@wp.pl',
@@ -127,6 +129,16 @@ describe('Module exports', () => {
 
 	it('version matches package.json', () => {
 		expect(emailValidator.version).toBe(packageVersion);
+	});
+});
+
+describe('Return value is strictly boolean', () => {
+	test('returns a boolean for a valid address', () => {
+		expect(typeof emailValidator('contact@sefinek.net')).toBe('boolean');
+	});
+
+	test('returns a boolean for an invalid address', () => {
+		expect(typeof emailValidator('not-an-email')).toBe('boolean');
 	});
 });
 
