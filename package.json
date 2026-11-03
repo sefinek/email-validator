@@ -1,6 +1,6 @@
 {
   "name": "@sefinek/email-validator",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Lightweight npm module for email address validation with optional MX record verification.",
   "keywords": [
     "dns",
@@ -64,10 +64,10 @@
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@types/jest": "^30.0.0",
-    "globals": "^17.13.0",
+    "globals": "^17.14.0",
     "jest": "^30.5.2",
-    "webpack": "^5.111.1",
-    "webpack-cli": "^7.2.3"
+    "webpack": "^5.112.2",
+    "webpack-cli": "^7.3.1"
   },
   "engines": {
     "node": ">=18.0.0"
