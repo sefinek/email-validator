@@ -3,7 +3,7 @@ declare const emailValidator: {
 	 * Returns `true` if the email address is valid, otherwise `false`.
 	 *
 	 * @example
-	 * const emailValidator = require('@sefinek/email-validator');
+	 * import emailValidator from '@sefinek/email-validator';
 	 *
 	 * emailValidator('contact@sefinek.net'); // true
 	 * emailValidator('invalid-email');       // false
@@ -16,4 +16,4 @@ declare const emailValidator: {
 	readonly version: string;
 };
 
-export = emailValidator;
+export default emailValidator;

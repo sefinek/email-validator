@@ -1,4 +1,4 @@
-const VERSION = '2.1.0'; // TODO: Remember to bump the version
+const VERSION = '3.0.0'; // TODO: Remember to bump the version
 const REGEX = /^[-!#$%&'+\\/0-9=?A-Z^_a-z`{|}~](\.?[-!#$%&'+\\/0-9=?A-Z^_a-z`{|}~])*@[a-zA-Z0-9](-*\.?[a-zA-Z0-9])*\.[a-zA-Z](-?[a-zA-Z0-9])+$/;
 
 const isValidDomain = domain => {
@@ -22,4 +22,5 @@ const emailValidator = email => {
 };
 
 emailValidator.version = VERSION;
-module.exports = emailValidator;
+export default emailValidator;
+export { emailValidator as 'module.exports' };

@@ -1,5 +1,5 @@
-const emailValidator = require('./src/index.js');
-const verifyMx = require('./src/mx.js');
+import emailValidator from './src/index.js';
+import verifyMx from './src/mx.js';
 
 console.log(`-- @sefinek/email-validator v${emailValidator.version} --\n`);
 

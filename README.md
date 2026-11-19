@@ -30,7 +30,7 @@ yarn add @sefinek/email-validator
 
 ### Example
 ```js
-const emailValidator = require('@sefinek/email-validator');
+import emailValidator from '@sefinek/email-validator';
 
 const TEST_EMAIL = 'contact@sefinek.net';
 if (emailValidator(TEST_EMAIL)) {
@@ -40,14 +40,20 @@ if (emailValidator(TEST_EMAIL)) {
 }
 ```
 
+The package is ESM. `require()` works too on Node.js 22.12+ and returns the function directly, without `.default`:
+
+```js
+const emailValidator = require('@sefinek/email-validator');
+```
+
 ### MX record verification (Node.js only)
 Beyond syntax validation, you can check whether the domain actually accepts mail by verifying its MX records.
 The function lives under the `/mx` subpath because it depends on `node:dns` and is therefore **not** included in the browser bundle.
 It accepts a full email address (the domain after the last `@` is used) or a bare domain. It never throws and resolves exclusively to a `Boolean`.
 
 ```js
-const emailValidator = require('@sefinek/email-validator');
-const verifyMx = require('@sefinek/email-validator/mx');
+import emailValidator from '@sefinek/email-validator';
+import verifyMx from '@sefinek/email-validator/mx';
 
 const TEST_EMAIL = 'contact@sefinek.net';
 
@@ -74,7 +80,7 @@ With `validateSyntax: true`, the input is first checked against the syntax valid
 ## 🌍 » Browser
 ### jsdelivr.net
 ```
-https://cdn.jsdelivr.net/npm/@sefinek/email-validator@2/dist/email-validator.min.js
+https://cdn.jsdelivr.net/npm/@sefinek/email-validator@3/dist/email-validator.min.js
 ```
 
 ### Example
@@ -88,7 +94,7 @@ https://cdn.jsdelivr.net/npm/@sefinek/email-validator@2/dist/email-validator.min
 <body>
     <h1>email-validator</h1>
 
-    <script src="https://cdn.jsdelivr.net/npm/@sefinek/email-validator@2/dist/email-validator.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@sefinek/email-validator@3/dist/email-validator.min.js"></script>
     <script>
         const email = 'contact@sefinek.net';
 

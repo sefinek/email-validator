@@ -1,6 +1,6 @@
 {
   "name": "@sefinek/email-validator",
-  "version": "2.1.1",
+  "version": "3.0.0",
   "description": "Lightweight npm module for email address validation with optional MX record verification.",
   "keywords": [
     "dns",
@@ -32,15 +32,15 @@
   },
   "license": "MIT",
   "author": "Sefinek <contact@sefinek.net> (https://sefinek.net)",
-  "type": "commonjs",
+  "type": "module",
   "exports": {
     ".": {
       "types": "./src/index.d.ts",
-      "require": "./src/index.js"
+      "default": "./src/index.js"
     },
     "./mx": {
       "types": "./src/mx.d.ts",
-      "require": "./src/mx.js"
+      "default": "./src/mx.js"
     }
   },
   "main": "src/index.js",
@@ -59,20 +59,15 @@
     "build": "webpack --config webpack.config.js",
     "lint": "eslint .",
     "m": "ncu -u && npm install && npm update",
-    "test": "jest"
+    "test": "node --test"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@types/jest": "^30.0.0",
     "globals": "^17.14.0",
-    "jest": "^30.5.2",
-    "webpack": "^5.112.2",
+    "webpack": "^5.113.0",
     "webpack-cli": "^7.3.1"
   },
   "engines": {
-    "node": ">=18.0.0"
-  },
-  "allowScripts": {
-    "unrs-resolver@1.12.2": true
+    "node": ">=22.12.0"
   }
 }

@@ -37,13 +37,13 @@ interface VerifyMxOptions {
  * Never throws: DNS failures and invalid input resolve to `false`.
  *
  * @example
- * const verifyMx = require('@sefinek/email-validator/mx');
+ * import verifyMx from '@sefinek/email-validator/mx';
  *
  * await verifyMx('contact@sefinek.net');                           // system resolvers
  * await verifyMx('contact@sefinek.net', { servers: ['1.1.1.1'] }); // custom DNS
  *
- * @version 2.1.0
+ * @version 3.0.0
  */
 declare const verifyMx: (input: string, options?: VerifyMxOptions) => Promise<boolean>;
 
-export = verifyMx;
+export default verifyMx;

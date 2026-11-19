@@ -1,5 +1,10 @@
-const emailValidator = require('../src/index.js');
-const { version: packageVersion } = require('../package.json');
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { createRequire } from 'node:module';
+import { describe, it } from 'node:test';
+import emailValidator from '../src/index.js';
+
+const { version: packageVersion } = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8'));
 
 // Local part at the exact 64-character maximum, must still be valid.
 const maxLengthLocalPart = `${'a'.repeat(64)}@example.com`;
@@ -119,55 +124,52 @@ const validUnsupported = [
 
 describe('Module exports', () => {
 	it('emailValidator is a function', () => {
-		expect(typeof emailValidator).toBe('function');
+		assert.equal(typeof emailValidator, 'function');
 	});
 
 	it('version is a non-empty string', () => {
-		expect(typeof emailValidator.version).toBe('string');
-		expect(emailValidator.version.length).toBeGreaterThan(0);
+		assert.equal(typeof emailValidator.version, 'string');
+		assert.ok(emailValidator.version.length > 0);
 	});
 
 	it('version matches package.json', () => {
-		expect(emailValidator.version).toBe(packageVersion);
+		assert.equal(emailValidator.version, packageVersion);
+	});
+
+	it('require() returns the function directly', () => {
+		assert.equal(typeof createRequire(import.meta.url)('../src/index.js'), 'function');
 	});
 });
 
 describe('Return value is strictly boolean', () => {
-	test('returns a boolean for a valid address', () => {
-		expect(typeof emailValidator('contact@sefinek.net')).toBe('boolean');
+	it('returns a boolean for a valid address', () => {
+		assert.equal(typeof emailValidator('contact@sefinek.net'), 'boolean');
 	});
 
-	test('returns a boolean for an invalid address', () => {
-		expect(typeof emailValidator('not-an-email')).toBe('boolean');
+	it('returns a boolean for an invalid address', () => {
+		assert.equal(typeof emailValidator('not-an-email'), 'boolean');
 	});
 });
 
 describe('Robustness against non-string input', () => {
-	test.each([null, undefined, 42, 0, true, false, {}, [], ['a@b.com'], Symbol('x')])(
-		'returns false without throwing for: %p',
-		input => {
-			expect(() => emailValidator(input)).not.toThrow();
-			expect(emailValidator(input)).toBe(false);
-		}
-	);
+	for (const input of [null, undefined, 42, 0, true, false, {}, [], ['a@b.com'], Symbol('x')]) {
+		it(`returns false without throwing for: ${String(typeof input === 'object' ? JSON.stringify(input) : String(input))}`, () => {
+			assert.doesNotThrow(() => emailValidator(input));
+			assert.equal(emailValidator(input), false);
+		});
+	}
 });
 
 describe('Email address validation', () => {
-	describe.each(validEmails)('Test valid email addresses', email => {
-		it(email, () => {
-			expect(emailValidator(email)).toBe(true);
-		});
+	describe('valid email addresses', () => {
+		for (const email of validEmails) it(email, () => assert.equal(emailValidator(email), true));
 	});
 
-	describe.each(invalidEmails)('Test invalid email addresses', email => {
-		it(email, () => {
-			expect(emailValidator(email)).toBe(false);
-		});
+	describe('invalid email addresses', () => {
+		for (const email of invalidEmails) it(email, () => assert.equal(emailValidator(email), false));
 	});
 
-	describe.each(validUnsupported)('Test valid but unsupported email addresses', email => {
-		it(email, () => {
-			expect(emailValidator(email)).toBe(false);
-		});
+	describe('valid but unsupported email addresses', () => {
+		for (const email of validUnsupported) it(email, () => assert.equal(emailValidator(email), false));
 	});
 });
