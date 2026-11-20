@@ -27,14 +27,29 @@ interface VerifyMxOptions {
 	 * @default false
 	 */
 	validateSyntax?: boolean;
+
+	/**
+	 * What to return when the lookup fails for a transient reason (timeout, SERVFAIL,
+	 * refused connection), so the answer is unknown. Definitive answers (the domain does not
+	 * exist or has no mail records) always resolve to `false`.
+	 *
+	 * Set to `true` to avoid rejecting real users during a DNS outage.
+	 * @default false
+	 */
+	failOpen?: boolean;
 }
 
 /**
- * Resolves `true` if the domain has at least one MX record, otherwise `false`.
+ * Resolves `true` if the domain can receive mail, otherwise `false`.
+ *
+ * A domain qualifies when it has at least one MX record, or, per RFC 5321 (implicit MX), no MX
+ * records but an A/AAAA record. A null MX (RFC 7505, `MX 0 .`) means the domain accepts no mail
+ * and resolves to `false`. Internationalized domains are converted to punycode before the lookup.
  *
  * Node.js only. Relies on `node:dns` and is not part of the browser bundle.
  * Accepts a full email address (the domain after the last `@` is used) or a bare domain.
- * Never throws: DNS failures and invalid input resolve to `false`.
+ * Never throws: invalid input and definitive DNS answers resolve to `false`, transient DNS
+ * failures resolve to `false` unless `failOpen` is set.
  *
  * @example
  * import verifyMx from '@sefinek/email-validator/mx';

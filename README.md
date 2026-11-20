@@ -71,8 +71,13 @@ await verifyMx('contact@sefinek.net', {
     timeout: 2000,                   // ms per query before a retry (-1 = system default)
     tries: 2,                        // attempts before giving up
     validateSyntax: true,            // reject syntactically invalid addresses before any DNS lookup
+    failOpen: true,                  // resolve to true when the lookup fails transiently (timeout, SERVFAIL)
 });
 ```
+
+A domain passes when it has an MX record or, per RFC 5321, no MX but an A/AAAA record (implicit MX). A null MX (`MX 0 .`, RFC 7505) means the domain accepts no mail and fails. Internationalized domains are converted to punycode first.
+
+Only definitive answers (the domain does not exist, or has no mail records) always resolve to `false`. When the lookup fails transiently (timeout, SERVFAIL), the result is unknown: it resolves to `false` by default, or to `true` with `failOpen: true`, which avoids rejecting real users during a DNS outage.
 
 With `validateSyntax: true`, the input is first checked against the syntax validator and an invalid address resolves to `false` without a DNS query. Note that this requires a full email address, so a bare domain is rejected when the flag is enabled.
 
